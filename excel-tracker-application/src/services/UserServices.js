@@ -87,13 +87,24 @@ const UserServices = {
       "CompetencyIds": ["testId"] // for some reason, must be in double quotes " not single quotes '
     }
 
-    let url = Config.baseAPI + '/tracking-locations-to-competencies'
+    // let url = Config.baseAPI + '/tracking-locations-to-competencies'
+
+    // const response = await fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     'Authorization': key
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+
+    let url = 'https://postman-echo.com/post'
 
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': key
+        // 'Authorization': key
       },
       body: JSON.stringify(data)
     })
