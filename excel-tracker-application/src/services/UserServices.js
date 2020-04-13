@@ -1,6 +1,8 @@
 import dummyData from './DummyData'
 import Config from './../Config'
 
+const axios = require('axios').default;
+
 const key = 'eyJraWQiOiJJbSt0cTlubU81YWZTT0g1Z0pQMXZnZ2xVdUJwUTQzVGhFaHFsUXQ1YndFPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiJjMGY2NzZkMi01MTA0LTRmNzUtYTVmNi1iZWY4ODAxZmNiY2MiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMS5hbWF6b25hd3MuY29tXC91cy1lYXN0LTFfZUpuZExSQ1A2IiwicGhvbmVfbnVtYmVyX3ZlcmlmaWVkIjpmYWxzZSwiY29nbml0bzp1c2VybmFtZSI6InRlc3R1c2VyMSIsImF1ZCI6IjFlaTNndjZwbWxxbW9zdWNtZXRiZ3U1Y21lIiwiZXZlbnRfaWQiOiJlNzg2YTIzYi1mYzc2LTQzMzgtYWNmMC1lNTM2MGZhNDUwZGQiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTU4Njc5ODM1NCwibmFtZSI6InRlc3QxIiwiZXhwIjoxNTg2ODAxOTU0LCJjdXN0b206cm9sZSI6IkFkbWluIiwiaWF0IjoxNTg2Nzk4MzU0LCJlbWFpbCI6IndhbGtlcmhwb3dlbGxAaG90bWFpbC5jb20ifQ.CJ6Z6-mUnm-8tVD2BGJlMysYc8L-N_verF-gH0O2lR_VpB0LPM4dYtbkUgYF4RgtpnFfnpvW2xs6BPelNeVpKDjmRnGHzUBnYcYgdVu7YxJMF5CTyY8wqUolUfjEyM7_9uH9jTqEGNZ6ENGNLDUK07FJ3OHqtHZZzgTMN7SWvMKQC4IoMMO42ifFYYVXVTmn_1h-goHzHRCsqFtraJS3TOAVoP_ebSM3Qm4D87Z83dc74fSvBfmVPOpp_ZQRVxHs7oP9rfaWtfyjmFKOvRnpg9pUlYZEwXLxTjyz70vEqNdtZSTtQE7u5Vc10LRpbLb-Bfwv3bYA8V--gukDtTrHaA'
 
 const UserServices = {
@@ -100,16 +102,29 @@ const UserServices = {
 
     let url = 'https://postman-echo.com/post'
 
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        // 'Authorization': key
-      },
-      body: JSON.stringify(data)
-    })
+    // const response = await fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //     // 'Authorization': key
+    //   },
+    //   body: JSON.stringify(data)
+    // })
 
-    return response
+    const options = {
+      headers: {'Content-Type': 'application/json',
+                'Authorization': key}
+    };
+    
+    axios.post(url, JSON.stringify(data), options).then(function (response) {
+      console.log(response);
+      // return response;
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+    // return response
 
   },
 
